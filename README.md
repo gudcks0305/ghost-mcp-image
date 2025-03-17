@@ -1,11 +1,15 @@
 # Ghost Images
 
 Ghost 블로그 플랫폼에 이미지를 업로드하고 관리하기 위한 API 서버입니다. 이 프로젝트는 Ghost Admin API를 활용하여 이미지 업로드 및 관리 기능을 제공합니다.
-
+기존 Ghost MCP에서 지원하지 않는 기능을 추가합니다. 
+## 목적 
+node python 기반의 mcp 서버들이 많은데 현재 저는 60가지 이상의 툴을 사용하고 있습니다. 
+이러한 서버들이 많은 메모리를 차지 하게 되었으며 go native 기반의 mcp 서버를 사용하면 메모리 사용량을 줄일 수 있을 것으로 예상합니다.
 ## 기능
 
 - Ghost 블로그에 이미지 업로드
-- 멀티파트 폼 데이터 지원
+- local path 이미지 업로드
+- Base64 file save after upload
 - JWT 인증
 - MCP 서버 기능
 
@@ -99,6 +103,7 @@ curl -X POST http://localhost:8080/upload -H "Content-Type: multipart/form-data"
 문의사항이 있으시면 이슈를 생성하거나 이메일로 연락해주세요.
 
 ## Claude Desktop Config
+### mac 환경에서는 `~/Library/Application Support/Claude/claude_desktop_config.json` 경로에 위 설정을 추가합니다.
 
 ```
 {
@@ -115,9 +120,29 @@ curl -X POST http://localhost:8080/upload -H "Content-Type: multipart/form-data"
     }
 }
 ```
+### windows 환경에서는 `C:\Users\<username>\AppData\Roaming\anthropic\claude_desktop_config.json` 경로에 위 설정을 추가합니다.  
+
+```
+{
+    "ghost-images": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "your-builded-path-example\\bin\\ghost-images\\main.exe"
+      ],
+      "env": {
+        "GHOST_API_URL": "https://your-ghost-instance.com",
+        "GHOST_STAFF_API_KEY": "your-staff-api-key"
+      }
+    }
+}
+```
 
 ## 참고
 - [Go Mcp](https://github.com/mark3labs/mcp-go)
 - [Ghost Admin API](https://ghost.org/docs/api/admin/)
 - [JSON-RPC 2.0](https://www.jsonrpc.org/specification)
 - [MFYDev/ghost-mcp](https://github.com/MFYDev/ghost-mcp)
+
+### Claude Desktop 프롬프트 사용 예시
+![image](image.png)
