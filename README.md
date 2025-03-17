@@ -20,8 +20,8 @@ Ghost 블로그 플랫폼에 이미지를 업로드하고 관리하기 위한 AP
 1. 저장소 클론
 
 ```bash
-git clone https://github.com/your-username/ghost-images.git
-cd ghost-images
+git clone https://github.com/gudcks0305/ghost-mcp-images.git
+cd ghost-mcp-images
 ```
 
 2. 의존성 설치
@@ -78,8 +78,12 @@ air
 ### 이미지 업로드
 
 ```
+내부적으로 curl 명령어를 사용하여 이미지를 업로드합니다. http 415 error 발생으로 아래 curl 명령어를 사용하게 되었습니다.
 curl -X POST http://localhost:8080/upload -H "Content-Type: multipart/form-data" -F "file=@/path/to/image.jpg"
 ```
+실제 요청은 JSON-RPC 형식으로 요청합니다.
+
+
 
 ## 개발 팁
 
@@ -93,3 +97,27 @@ curl -X POST http://localhost:8080/upload -H "Content-Type: multipart/form-data"
 ## 연락처
 
 문의사항이 있으시면 이슈를 생성하거나 이메일로 연락해주세요.
+
+## Claude Desktop Config
+
+```
+{
+    "ghost-images": {
+      "command": "zsh",
+      "args": [
+        "-c",
+        "your-builded-path-example/bin/ghost-images/main"
+      ],
+      "env": {
+        "GHOST_API_URL": "https://your-ghost-instance.com",
+        "GHOST_STAFF_API_KEY": "your-staff-api-key"
+      }
+    }
+}
+```
+
+## 참고
+- [Go Mcp](https://github.com/mark3labs/mcp-go)
+- [Ghost Admin API](https://ghost.org/docs/api/admin/)
+- [JSON-RPC 2.0](https://www.jsonrpc.org/specification)
+- [MFYDev/ghost-mcp](https://github.com/MFYDev/ghost-mcp)
