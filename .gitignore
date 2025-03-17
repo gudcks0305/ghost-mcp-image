@@ -1,0 +1,51 @@
+# Go 관련 무시 파일
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+*.o
+*.a
+*.prof
+*.pprof
+*.cgo1.go
+*.cgo2.c
+_cgo_defun.c
+_cgo_gotypes.go
+_cgo_export.*
+__debug_bin
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# 바이너리 파일 무시
+main
+/main
+bin/
+/bin/
+
+# 환경 설정 파일 무시
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# OS 관련 파일 무시
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# 로그 파일
+*.log
+tmp/
+
+# 기타 개인 설정 파일
+.air.toml 
