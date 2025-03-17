@@ -49,7 +49,7 @@ func UploadImageBase64Image(base64Image string) (map[string]interface{}, error) 
 		return nil, err
 	}
 
-	response, err := api.MakeGhostMultipartRequest(uploadUrl, map[string]string{}, context.Background(), false, "POST", imagePath)
+	response, err := api.MakeGhostMultipartRequestCurl(uploadUrl, map[string]string{}, context.Background(), false, "POST", imagePath)
 	if err != nil {
 		return nil, err
 	}
